@@ -1,0 +1,53 @@
+{
+  "name": "@tooni/iconscout-unicons",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./line": {
+      "import": "./dist/line.js",
+      "require": "./dist/line.cjs",
+      "types": "./dist/line.d.ts"
+    },
+    "./solid": {
+      "import": "./dist/solid.js",
+      "require": "./dist/solid.cjs",
+      "types": "./dist/solid.d.ts"
+    },
+    "./monochrome": {
+      "import": "./dist/monochrome.js",
+      "require": "./dist/monochrome.cjs",
+      "types": "./dist/monochrome.d.ts"
+    },
+    "./thinline": {
+      "import": "./dist/thinline.js",
+      "require": "./dist/thinline.cjs",
+      "types": "./dist/thinline.d.ts"
+    }
+  },
+  "scripts": {
+    "generate": "pnpm i && ./generate.sh",
+    "build": "rm -rf dist && vite build",
+    "clean": "rm -rf generated && rm -rf dist",
+    "test": "tsc"
+  },
+  "peerDependencies": {
+    "react": ">= 16"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@iconscout/unicons": "^4.0.8",
+    "@types/node": "^22.5.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1",
+    "vite-plugin-dts": "^4.0.3"
+  }
+}
