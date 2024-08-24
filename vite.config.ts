@@ -5,10 +5,12 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
   build: {
     lib: {
-      entry: ['line', 'monochrome', 'thinline', 'solid'].map((p: string) =>
-        resolve(__dirname, `generated/${p}/${p}.ts`)
-      ),
-      name: '@tooni/iconscout-unicons',
+      entry: {
+        line: resolve(__dirname, 'generated/line/index.ts'),
+        monochrome: resolve(__dirname, 'generated/monochrome/index.ts'),
+        thinline: resolve(__dirname, 'generated/thinline/index.ts'),
+        solid: resolve(__dirname, 'generated/solid/index.ts'),
+      },
     },
     rollupOptions: {
       external: ['react'],
