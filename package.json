@@ -29,7 +29,7 @@
     }
   },
   "scripts": {
-    "generate": "pnpm i && ./generate.sh",
+    "generate": "pnpm i && python3 generate.py",
     "build": "rm -rf dist && vite build",
     "clean": "rm -rf generated && rm -rf dist",
     "test": "tsc"

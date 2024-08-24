@@ -1,5 +1,5 @@
 import { SVGProps } from 'react';
-export interface UniconProps extends SVGProps<SVGElement> {
+export interface UniconProps extends SVGProps<SVGSVGElement> {
   /**
     * The color of the icon.
     * @default 'currentColor'

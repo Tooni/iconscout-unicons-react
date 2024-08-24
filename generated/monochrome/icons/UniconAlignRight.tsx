@@ -1,0 +1,8 @@
+import React from 'react';
+import { UniconProps } from '../UniconProps';
+
+export const UniconAlignRight = ({ size=24, color='currentColor', ...others }: UniconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} fill={color} {...others}>
+    <path className="uim-primary" d="M21 7H3a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2zm0 4H7a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2zm0 4H3a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2zm0 4H7a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"/>
+  </svg>
+);

@@ -1,5 +1,0 @@
-import { createElement } from 'react';
-import { UniconProps } from '../UniconProps';
-export const UniconUserArrows = ({ color='currentColor', size='24', ...others }: UniconProps) =>
-  createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', width: size, height: size, viewBox: '0 0 24 24', fill: color, ...others },
-    createElement('path', { d: 'M6 16.5A3.5 3.5 0 1 1 9.5 13 3.504 3.504 0 0 1 6 16.5Z' }),createElement('path', { d: 'M8.64 15.272a3.452 3.452 0 0 1-5.28 0A4.988 4.988 0 0 0 1 19.5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1 4.988 4.988 0 0 0-2.36-4.228zM18 16.5a3.5 3.5 0 1 1 3.5-3.5 3.504 3.504 0 0 1-3.5 3.5z' }),createElement('path', { d: 'M20.64 15.272a3.452 3.452 0 0 1-5.28 0A4.988 4.988 0 0 0 13 19.5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1 4.988 4.988 0 0 0-2.36-4.228Z' }),createElement('path', { d: 'm17.207 5.793-2-2a1 1 0 0 0-1.414 1.414l.293.293H9.914l.293-.293a1 1 0 0 0-1.414-1.414l-2 2a1 1 0 0 0 0 1.414l2 2a1 1 0 0 0 1.414-1.414L9.914 7.5h4.172l-.293.293a1 1 0 1 0 1.414 1.414l2-2a1 1 0 0 0 0-1.414Z' }));
