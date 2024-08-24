@@ -7,11 +7,6 @@
     "dist"
   ],
   "exports": {
-    ".": {
-      "import": "./dist/line.js",
-      "require": "./dist/line.cjs",
-      "types": "./dist/line.d.ts"
-    },
     "./line": {
       "import": "./dist/line.js",
       "require": "./dist/line.cjs",
