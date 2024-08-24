@@ -29,7 +29,7 @@
     }
   },
   "scripts": {
-    "generate": "pnpm i && python3 generate.py",
+    "generate": "pnpm i && ./generate.sh",
     "build": "rm -rf dist && vite build",
     "clean": "rm -rf generated && rm -rf dist",
     "test": "tsc"
@@ -42,6 +42,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@iconscout/unicons": "^4.0.8",
+    "@svgr/cli": "^8.1.0",
     "@types/node": "^22.5.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

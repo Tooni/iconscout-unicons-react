@@ -1,0 +1,21 @@
+import * as React from 'react'
+import type { SVGProps } from 'react'
+import { Ref, forwardRef } from 'react'
+const SvgGlassMartini = (
+  props: SVGProps<SVGSVGElement>,
+  ref: Ref<SVGSVGElement>,
+) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    color="currentColor"
+    ref={ref}
+    {...props}
+  >
+    <path d="M18 20h-5v-5.06A9 9 0 0 0 21 6a8.7 8.7 0 0 0-.67-3.39 1 1 0 0 0-.22-.32L20 2.21a1 1 0 0 0-.21-.13 1 1 0 0 0-.28-.08H4.5a1 1 0 0 0-.29.06A2 2 0 0 0 4 2.2l-.12.09a1 1 0 0 0-.22.32A8.7 8.7 0 0 0 3 6a9 9 0 0 0 8 8.94V20H6a1 1 0 0 0 0 2h12a1 1 0 0 0 0-2M5 6a7 7 0 0 1 .29-2h13.42A7 7 0 0 1 19 6 7 7 0 0 1 5 6" />
+  </svg>
+)
+const ForwardRef = forwardRef(SvgGlassMartini)
+export default ForwardRef
