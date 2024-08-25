@@ -19,15 +19,20 @@ do
 done
 
 echo "Replacing classNames in 'monochrome' style icons..."
-for file in generated/monochrome/*.tsx
-do
-  # delete existing opacity={blah} props
-  sed -i '' '/opacity={.*}/d' $file
-  # replace classNames with corresponding opacity props, to avoid stylesheets
-  sed -i '' 's/className="uim-primary"/opacity={1}/g' $file
-  sed -i '' 's/className="uim-secondary"/opacity={0.7}/g' $file
-  sed -i '' 's/className="uim-tertiary"/opacity={0.5}/g' $file
-  sed -i '' 's/className="uim-quaternary"/opacity={0.25}/g' $file
+# Determine the correct sed command based on the OS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    SED_COMMAND="sed -i ''"
+else
+    SED_COMMAND="sed -i"
+fi
+for file in generated/monochrome/*.tsx; do
+  # Delete existing opacity={blah} props
+  $SED_COMMAND '/opacity={.*}/d' "$file"
+  # Replace classNames with corresponding opacity props to avoid stylesheets
+  $SED_COMMAND 's/className="uim-primary"/opacity={1}/g' "$file"
+  $SED_COMMAND 's/className="uim-secondary"/opacity={0.7}/g' "$file"
+  $SED_COMMAND 's/className="uim-tertiary"/opacity={0.5}/g' "$file"
+  $SED_COMMAND 's/className="uim-quaternary"/opacity={0.25}/g' "$file"
 done
 echo "Finished replacing classNames in 'monochrome' style icons"
 
