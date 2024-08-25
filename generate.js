@@ -6,7 +6,6 @@ function processSvgs() {
   for (const folder of ["line", "solid", "thinline", "monochrome"]) {
     console.log(`Processing '${folder}' style icons...`);
 
-    // Ensure the output directory exists
     const outputDir = path.join("generated", folder);
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
@@ -38,7 +37,6 @@ function replaceClassnamesInMonochrome() {
 
   const monochromeDir = path.join("generated", "monochrome");
 
-  // Check if the directory exists before trying to read it
   if (!fs.existsSync(monochromeDir)) {
     console.error(
       `Directory '${monochromeDir}' does not exist. Skipping className replacements.`,
@@ -48,7 +46,6 @@ function replaceClassnamesInMonochrome() {
 
   const files = fs.readdirSync(monochromeDir);
 
-  // files.forEach((filename) => {
   for (const filename of files) {
     if (filename.endsWith(".tsx")) {
       const filepath = path.join(monochromeDir, filename);
