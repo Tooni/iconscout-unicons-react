@@ -31,6 +31,12 @@ function replaceClassnamesInMonochrome() {
   const monochromeDir = path.join("generated", "monochrome");
   const files = fs.readdirSync(monochromeDir);
 
+  // Check if the directory exists before trying to read it
+  if (!fs.existsSync(monochromeDir)) {
+    console.warn(`Directory '${monochromeDir}' does not exist. Skipping className replacements.`);
+    return;
+  }
+
   for (const filename of files) {
     if (filename.endsWith(".tsx")) {
       const filepath = path.join(monochromeDir, filename);
