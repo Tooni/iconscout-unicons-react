@@ -2,14 +2,15 @@ import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
 
-// Define the SVG folders to process
 const svgFolders = ["line", "solid", "thinline", "monochrome"];
 
 function runCommand(command) {
   try {
+    console.log(`Executing: ${command}`);
     execSync(command, { stdio: "inherit" });
   } catch (error) {
     console.error(`Command failed: ${command}`);
+    console.error(error.message);
     process.exit(1);
   }
 }
@@ -24,17 +25,19 @@ function processSvgs() {
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
-    const command = `
-      pnpm svgr \
-      --index-template=templates/indexTemplate.cjs \
-      --template=templates/iconTemplate.cjs \
-      --svg-props="height={size},width={size},fill={color}" \
-      --ref \
-      --typescript \
-      --filename-case kebab \
-      --out-dir ${outputDir} \
-      -- node_modules/@iconscout/unicons/svg/${folder}
-    `;
+    // Adjust the command for Windows compatibility
+    const command = [
+      "pnpm svgr",
+      "--index-template=templates/indexTemplate.cjs",
+      "--template=templates/iconTemplate.cjs",
+      '--svg-props="height={size},width={size},fill={color}"',
+      "--ref",
+      "--typescript",
+      "--filename-case kebab",
+      `--out-dir ${outputDir}`,
+      `node_modules/@iconscout/unicons/svg/${folder}`,
+    ].join(" ");
+
     runCommand(command);
     console.log(`Generated folder for '${folder}' style icons`);
   });
