@@ -14,7 +14,7 @@ describe("kebabToPascalCase", () => {
     expect(kebabToPascalCase("")).to.equal("");
   });
 
-  it('shouldn not change "AlreadyPascalCase"', () => {
+  it('should not change "AlreadyPascalCase"', () => {
     expect(kebabToPascalCase("AlreadyPascalCase")).to.equal(
       "AlreadyPascalCase",
     );
