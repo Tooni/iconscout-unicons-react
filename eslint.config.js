@@ -6,5 +6,11 @@ export default [
   eslintConfigPrettier,
   {
     ignores: ["dist", "node_modules", "generated"],
+    rules: {
+      "linebreak-style": [
+        "error",
+        process.platform === "win32" ? "windows" : "unix",
+      ],
+    },
   },
 ];
