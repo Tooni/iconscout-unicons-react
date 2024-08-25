@@ -7,9 +7,11 @@ export default [
   {
     ignores: ["dist", "node_modules", "generated"],
     rules: {
-      "linebreak-style": [
+      "prettier/prettier": [
         "error",
-        process.platform === "win32" ? "windows" : "unix",
+        {
+          endOfLine: "auto",
+        },
       ],
     },
   },
