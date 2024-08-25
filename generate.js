@@ -1,7 +1,8 @@
-import fs from "fs";
-import path from "path";
-import { execSync } from "child_process";
+const fs = require("fs");
+const path = require("path");
+const { execSync } = require("child_process");
 
+// Define the SVG folders to process
 const svgFolders = ["line", "solid", "thinline", "monochrome"];
 
 function runCommand(command) {
@@ -16,6 +17,13 @@ function runCommand(command) {
 function processSvgs() {
   svgFolders.forEach((folder) => {
     console.log(`Processing '${folder}' style icons...`);
+
+    // Ensure the output directory exists
+    const outputDir = path.join("generated", folder);
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
+
     const command = `
       pnpm svgr \
       --index-template=templates/indexTemplate.cjs \
@@ -24,7 +32,7 @@ function processSvgs() {
       --ref \
       --typescript \
       --filename-case kebab \
-      --out-dir generated/${folder} \
+      --out-dir ${outputDir} \
       -- node_modules/@iconscout/unicons/svg/${folder}
     `;
     runCommand(command);
@@ -97,9 +105,12 @@ export interface UniconProps extends SVGProps<SVGSVGElement> {
 }
 
 function main() {
-  if (!fs.existsSync("generated")) {
-    fs.mkdirSync("generated");
+  // Ensure the 'generated' directory exists
+  const generatedDir = "generated";
+  if (!fs.existsSync(generatedDir)) {
+    fs.mkdirSync(generatedDir, { recursive: true });
   }
+
   processSvgs();
   replaceClassnamesInMonochrome();
   generateUniconProps();
