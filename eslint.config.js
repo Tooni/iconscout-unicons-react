@@ -10,7 +10,7 @@ export default [
       "prettier/prettier": [
         "error",
         {
-          endOfLine: "auto",
+          endOfLine: process.platform === "win32" ? "crlf" : "lf",
         },
       ],
     },
