@@ -4,16 +4,36 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 9
-      - run: pnpm i
-      - run: pnpm run lint
-      - run: pnpm run test
-      - run: pnpm run clean
-      - run: pnpm run generate
-      - run: pnpm run build
-      - run: pnpm run type-check
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Run Linter
+        run: pnpm run lint
+
+      - name: Run Tests
+        run: pnpm run test
+
+      - name: Clean Project
+        run: pnpm run clean
+
+      - name: Generate Files
+        run: pnpm run generate
+
+      - name: Build Project
+        run: pnpm run build
+
+      - name: Type Check
+        run: pnpm run type-check
