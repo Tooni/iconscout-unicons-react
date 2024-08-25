@@ -1,24 +1,24 @@
 import * as React from 'react'
-import type { SVGProps } from 'react'
 import { Ref, forwardRef } from 'react'
+import { UniconProps } from '../UniconProps'
 const SvgToggleOff = (
-  props: SVGProps<SVGSVGElement>,
+  { size = 24, color = 'currentColor', ...props }: UniconProps,
   ref: Ref<SVGSVGElement>,
 ) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    width="24"
-    height="24"
-    color="currentColor"
+    height={size}
+    width={size}
+    fill={color}
     ref={ref}
     {...props}
   >
     <path
       d="M16.5 17.5h-9a5.5 5.5 0 1 1 0-11h9a5.5 5.5 0 1 1 0 11"
-      className="toggle-off_svg__uim-tertiary"
+      opacity={0.5}
     />
-    <circle cx={7.5} cy={12} r={2.5} className="toggle-off_svg__uim-primary" />
+    <circle cx={7.5} cy={12} r={2.5} opacity={1} />
   </svg>
 )
 const ForwardRef = forwardRef(SvgToggleOff)

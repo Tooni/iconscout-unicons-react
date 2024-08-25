@@ -1,5 +1,5 @@
 {
-  "name": "@tooni/iconscout-unicons",
+  "name": "@tooni/iconscout-unicons-react",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -7,6 +7,11 @@
     "dist"
   ],
   "exports": {
+    ".": {
+      "import": "./dist/line.js",
+      "require": "./dist/line.cjs",
+      "types": "./dist/line.d.ts"
+    },
     "./line": {
       "import": "./dist/line.js",
       "require": "./dist/line.cjs",
@@ -32,13 +37,27 @@
     "generate": "pnpm i && ./generate.sh",
     "build": "rm -rf dist && vite build",
     "clean": "rm -rf generated && rm -rf dist",
-    "test": "tsc"
+    "type-check": "pnpm tsc --noEmit",
+    "test": "pnpm mocha ./**/*.test.js",
+    "lint": "pnpm eslint . --report-unused-disable-directives --max-warnings 0"
   },
   "peerDependencies": {
     "react": ">= 16"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "iconscout",
+    "unicons",
+    "react",
+    "svg",
+    "icon",
+    "icons",
+    "ui",
+    "ux",
+    "design",
+    "frontend",
+    "web"
+  ],
+  "author": "Neil Sayers",
   "license": "Apache-2.0",
   "devDependencies": {
     "@iconscout/unicons": "^4.0.8",
@@ -47,6 +66,12 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "chai": "^5.1.1",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "mocha": "^10.7.3",
+    "prettier": "^3.3.3",
     "typescript": "^5.5.3",
     "vite": "^5.4.1",
     "vite-plugin-dts": "^4.0.3"

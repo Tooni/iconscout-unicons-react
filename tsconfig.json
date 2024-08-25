@@ -6,7 +6,6 @@
       "strict": true,
       "skipLibCheck": true,
       "noEmit": true,
-      "forceConsistentCasingInFileNames": true,
       "jsx": "react"
     }
 }
