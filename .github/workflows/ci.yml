@@ -1,0 +1,17 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+      - run: pnpm i
+      - run: pnpm run lint
+      - run: pnpm run test
+      - run: pnpm run clean
+      - run: pnpm run generate
+      - run: pnpm run build
+      - run: pnpm run type-check
