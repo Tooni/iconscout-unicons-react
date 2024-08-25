@@ -6,7 +6,7 @@ const svgFolders = ["line", "solid", "thinline", "monochrome"];
 
 function runCommand(command) {
   try {
-    execSync(command, { stdio: 'inherit' });
+    execSync(command, { stdio: "inherit" });
   } catch (error) {
     console.error(`Command failed: ${command}`);
     process.exit(1);
@@ -14,7 +14,7 @@ function runCommand(command) {
 }
 
 function processSvgs() {
-  svgFolders.forEach(folder => {
+  svgFolders.forEach((folder) => {
     console.log(`Processing '${folder}' style icons...`);
     const command = `
       pnpm svgr \
@@ -39,27 +39,32 @@ function replaceClassnamesInMonochrome() {
 
   // Check if the directory exists before trying to read it
   if (!fs.existsSync(monochromeDir)) {
-    console.warn(`Directory '${monochromeDir}' does not exist. Skipping className replacements.`);
+    console.warn(
+      `Directory '${monochromeDir}' does not exist. Skipping className replacements.`,
+    );
     return;
   }
 
   const files = fs.readdirSync(monochromeDir);
 
-  files.forEach(filename => {
+  files.forEach((filename) => {
     if (filename.endsWith(".tsx")) {
       const filepath = path.join(monochromeDir, filename);
-      let content = fs.readFileSync(filepath, 'utf-8');
+      let content = fs.readFileSync(filepath, "utf-8");
 
       // Delete existing opacity={...} props
-      content = content.replace(/opacity={.*}/g, '');
+      content = content.replace(/opacity={.*}/g, "");
 
       // Replace classNames with corresponding opacity props
-      content = content.replace(/className="uim-primary"/g, 'opacity={1}');
-      content = content.replace(/className="uim-secondary"/g, 'opacity={0.7}');
-      content = content.replace(/className="uim-tertiary"/g, 'opacity={0.5}');
-      content = content.replace(/className="uim-quaternary"/g, 'opacity={0.25}');
+      content = content.replace(/className="uim-primary"/g, "opacity={1}");
+      content = content.replace(/className="uim-secondary"/g, "opacity={0.7}");
+      content = content.replace(/className="uim-tertiary"/g, "opacity={0.5}");
+      content = content.replace(
+        /className="uim-quaternary"/g,
+        "opacity={0.25}",
+      );
 
-      fs.writeFileSync(filepath, content, 'utf-8');
+      fs.writeFileSync(filepath, content, "utf-8");
     }
   });
 
@@ -87,7 +92,7 @@ export interface UniconProps extends SVGProps<SVGSVGElement> {
   `;
 
   const uniconPropsPath = path.join("generated", "UniconProps.ts");
-  fs.writeFileSync(uniconPropsPath, uniconPropsContent.trim(), 'utf-8');
+  fs.writeFileSync(uniconPropsPath, uniconPropsContent.trim(), "utf-8");
   console.log("Generated UniconProps.ts");
 }
 
