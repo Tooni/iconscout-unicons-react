@@ -13,15 +13,15 @@ function processSvgs() {
     }
 
     const command =
-        "pnpm svgr " +
-        "--index-template=templates/indexTemplate.cjs " +
-        "--template=templates/iconTemplate.cjs " +
-        '--svg-props="height={size},width={size},fill={color}" ' +
-        "--ref " +
-        "--typescript " +
-        "--filename-case kebab " +
-        `--out-dir ${outputDir} ` +
-        `node_modules/@iconscout/unicons/svg/${folder}`;
+      "pnpm svgr " +
+      "--index-template=templates/indexTemplate.cjs " +
+      "--template=templates/iconTemplate.cjs " +
+      '--svg-props="height={size},width={size},fill={color}" ' +
+      "--ref " +
+      "--typescript " +
+      "--filename-case kebab " +
+      `--out-dir ${outputDir} ` +
+      `node_modules/@iconscout/unicons/svg/${folder}`;
 
     try {
       execSync(command, { stdio: "inherit" });
