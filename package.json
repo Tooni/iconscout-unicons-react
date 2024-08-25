@@ -34,7 +34,7 @@
     }
   },
   "scripts": {
-    "generate": "pnpm i && python3 generate.py",
+    "generate": "pnpm i && node generate.js",
     "build": "rm -rf dist && vite build",
     "clean": "rm -rf generated && rm -rf dist",
     "type-check": "pnpm tsc --noEmit",
