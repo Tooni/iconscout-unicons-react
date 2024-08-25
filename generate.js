@@ -2,21 +2,8 @@ import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
 
-const svgFolders = ["line", "solid", "thinline", "monochrome"];
-
-function runCommand(command) {
-  try {
-    console.log(`Executing: ${command}`);
-    execSync(command, { stdio: "inherit" });
-  } catch (error) {
-    console.error(`Command failed: ${command}`);
-    console.error(error.message);
-    process.exit(1);
-  }
-}
-
 function processSvgs() {
-  svgFolders.forEach((folder) => {
+  for (const folder of ["line", "solid", "thinline", "monochrome"]) {
     console.log(`Processing '${folder}' style icons...`);
 
     // Ensure the output directory exists
@@ -25,22 +12,25 @@ function processSvgs() {
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
-    // Adjust the command for Windows compatibility
-    const command = [
-      "pnpm svgr",
-      "--index-template=templates/indexTemplate.cjs",
-      "--template=templates/iconTemplate.cjs",
-      '--svg-props="height={size},width={size},fill={color}"',
-      "--ref",
-      "--typescript",
-      "--filename-case kebab",
-      `--out-dir ${outputDir}`,
-      `node_modules/@iconscout/unicons/svg/${folder}`,
-    ].join(" ");
+    const command =
+        "pnpm svgr " +
+        "--index-template=templates/indexTemplate.cjs " +
+        "--template=templates/iconTemplate.cjs " +
+        '--svg-props="height={size},width={size},fill={color}" ' +
+        "--ref " +
+        "--typescript " +
+        "--filename-case kebab " +
+        `--out-dir ${outputDir} ` +
+        `node_modules/@iconscout/unicons/svg/${folder}`;
 
-    runCommand(command);
+    try {
+      execSync(command, { stdio: "inherit" });
+    } catch (error) {
+      console.error(error.message);
+      process.exit(1);
+    }
     console.log(`Generated folder for '${folder}' style icons`);
-  });
+  }
 }
 
 function replaceClassnamesInMonochrome() {
@@ -50,15 +40,16 @@ function replaceClassnamesInMonochrome() {
 
   // Check if the directory exists before trying to read it
   if (!fs.existsSync(monochromeDir)) {
-    console.warn(
+    console.error(
       `Directory '${monochromeDir}' does not exist. Skipping className replacements.`,
     );
-    return;
+    process.exit(1);
   }
 
   const files = fs.readdirSync(monochromeDir);
 
-  files.forEach((filename) => {
+  // files.forEach((filename) => {
+  for (const filename of files) {
     if (filename.endsWith(".tsx")) {
       const filepath = path.join(monochromeDir, filename);
       let content = fs.readFileSync(filepath, "utf-8");
@@ -77,7 +68,7 @@ function replaceClassnamesInMonochrome() {
 
       fs.writeFileSync(filepath, content, "utf-8");
     }
-  });
+  }
 
   console.log("Finished replacing classNames in 'monochrome' style icons");
 }
@@ -108,7 +99,6 @@ export interface UniconProps extends SVGProps<SVGSVGElement> {
 }
 
 function main() {
-  // Ensure the 'generated' directory exists
   const generatedDir = "generated";
   if (!fs.existsSync(generatedDir)) {
     fs.mkdirSync(generatedDir, { recursive: true });
