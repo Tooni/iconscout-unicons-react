@@ -2,10 +2,11 @@
 
 Making Iconscout's Unicons sets available again, as React components, since the official sources aren't maintained anymore. TypeScript and ref-forwarding are supported.
 
-Based on these repositories:
+Based on these:
 * https://github.com/Iconscout/react-unicons
 * https://github.com/Iconscout/react-unicons-monochrome
 * https://github.com/Iconscout/react-unicons-solid
+* https://github.com/Azuky/react-unicons/tree/master
 
 ## Use
 
