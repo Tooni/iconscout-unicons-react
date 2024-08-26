@@ -1,6 +1,6 @@
 # iconscout-unicons-react
 
-Making Iconscout's Unicons sets available again, as React components, since the official sources aren't maintained anymore. TypeScript and ref-forwarding are supported.
+Making [Iconscout's Unicons](https://github.com/Iconscout/unicons) SVG sets available again, as React components, since the official sources aren't maintained anymore. TypeScript and ref-forwarding are supported.
 
 Based on these:
 * https://github.com/Iconscout/react-unicons
