@@ -1,6 +1,6 @@
 {
   "name": "@tooni/iconscout-unicons-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Making Iconscout's Unicons SVG sets available again, as React components, with TypeScript support.",
   "type": "module",
   "files": [
