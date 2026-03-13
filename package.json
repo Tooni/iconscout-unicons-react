@@ -63,18 +63,18 @@
   "devDependencies": {
     "@iconscout/unicons": "^4.2.0",
     "@svgr/cli": "^8.1.0",
-    "@types/node": "^22.19.15",
-    "@types/react": "^18.3.28",
-    "@types/react-dom": "^18.3.7",
-    "@vitejs/plugin-react": "^4.7.0",
-    "chai": "^5.3.3",
-    "eslint": "^9.39.4",
-    "eslint-config-prettier": "^9.1.2",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "chai": "^6.2.2",
+    "eslint": "^10.0.3",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
-    "mocha": "^10.8.2",
+    "mocha": "^11.7.5",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3",
-    "vite": "^5.4.21",
+    "vite": "^8.0.0",
     "vite-plugin-dts": "^4.5.4"
   }
 }
